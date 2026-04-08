@@ -1,0 +1,38 @@
+{
+  "name": "oidc-worker",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/server/oidc/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "bun build --minify apps/server/oidc/src/index.ts --outfile dist/build/oidc/worker.ts"
+      }
+    },
+    "deploy": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "wrangler deploy",
+        "args": ["--config=./apps/server/oidc/wrangler.toml"]
+      }
+    },
+    "wrangler": {
+      "command": "wrangler dev",
+      "options": {
+        "args": ["--config=./apps/server/oidc/wrangler.toml", "--port=3000"]
+      },
+      "configurations": {
+        "remote": {
+          "args": ["--config=./apps/server/oidc/wrangler.dev.toml", "--port=3003", "--remote"]
+        },
+        "local": {
+          "args": ["--config=./apps/server/oidc/wrangler.dev.toml", "--port=3003"]
+        }
+      },
+      "defaultConfiguration": "development"
+    }
+  },
+  "tags": ["type:app", "scope:worker", "provider:cloudflare", "scope:oidc", "scope:auth"],
+  "implicitDependencies": ["@snappbiz/jwt"]
+}

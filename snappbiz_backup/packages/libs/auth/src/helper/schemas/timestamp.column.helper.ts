@@ -1,0 +1,7 @@
+import { sql } from "drizzle-orm";
+import { integer } from "drizzle-orm/sqlite-core";
+
+export const timestamps = {
+    createdAt: integer('created_at', { mode: "timestamp" }).notNull().default(sql`CURRENT_TIMESTAMP`),
+    updatedAt: integer('updated_at', { mode: "timestamp" }).notNull().default(sql`CURRENT_TIMESTAMP`).$onUpdate(() => sql`CURRENT_TIMESTAMP`),
+}

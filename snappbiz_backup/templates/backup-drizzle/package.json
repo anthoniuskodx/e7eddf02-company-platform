@@ -1,0 +1,25 @@
+{
+    "name": "@snappbiz/drizzle-db",
+    "version": "0.0.1",
+    "scripts": {
+        "db:auth:generate": "drizzle-kit generate --config configs/drizzle.auth.config.ts",
+        "db:auth:migrate:local": "wrangler d1 migrations apply auth-dev --local --env=dev-auth --persist-to=databases/auth",
+        "db:auth:migrate": "drizzle-kit migrate --config configs/drizzle.auth.config.ts",
+        "db:auth:up": "drizzle-kit up --config configs/drizzle.auth.config.ts",
+        "db:auth:drop": "drizzle-kit drop --config configs/drizzle.auth.config.ts",
+        "db:auth:studio": "drizzle-kit studio --config configs/drizzle.auth.config.ts"
+    },
+    "dependencies": {
+        "@libsql/client": "^0.14.0",
+        "drizzle-orm": "^0.36.1",
+        "drizzle-zod": "^0.5.1"
+    },
+    "devDependencies": {
+        "@types/node": "^22.9.0",
+        "drizzle-kit": "^0.28.0",
+        "wrangler": "^3.85.0"
+    },
+    "nx": {
+      "name": "drizzle-db"
+    }
+}

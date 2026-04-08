@@ -1,0 +1,41 @@
+{
+  "name": "@snappbiz/tenant",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/libs/tenant/src",
+  "projectType": "library",
+  "targets": {
+    "db:tenant:generate": {
+      "command": "drizzle-kit generate",
+      "options": {
+        "args": [
+          "--config packages/libs/tenant/configs/drizzle.tenant.config.ts"
+        ]
+      }
+    },
+    "db:tenant:migrate:local": {
+      "command": "wrangler d1 migrations apply tenant-dev",
+      "options": {
+        "args": [
+          "--local",
+          "--config packages/libs/tenant/wrangler.dev.toml",
+          "--persist-to=.wrangler/tenant"
+        ]
+      }
+    },
+    "db:tenant:drop": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "drizzle-kit drop",
+        "args": ["--config packages/libs/tenant/configs/drizzle.tenant.config.ts"]
+      }
+    },
+    "db:tenant:studio": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "drizzle-kit studio",
+        "args": ["--config packages/libs/tenant/configs/drizzle.tenant.config.ts"]
+      }
+    }
+  },
+  "tags": ["type:lib", "scope:tenant"]
+}

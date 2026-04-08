@@ -1,0 +1,8 @@
+{
+  "name": "@snappbiz/crypto",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/libs/crypto/src",
+  "projectType": "library",
+  "targets": {},
+  "tags": ["type:lib", "scope:crypto"]
+}

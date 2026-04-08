@@ -1,0 +1,43 @@
+{
+  "name": "auth-worker",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/server/auth/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "bun build",
+        "args": [
+          "--external cloudflare:workers",
+          "--minify apps/server/auth/src/index.ts",
+          "--outfile dist/build/auth/worker.ts"
+        ]
+      }
+    },
+    "wrangler": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "wrangler dev",
+        "args": ["--config=./apps/server/auth/wrangler.toml", "--port=3001", "--persist-to=.wrangler/auth"]
+      },
+      "configurations": {
+        "remote": {
+          "command": "wrangler dev",
+          "args": ["--config=./apps/server/auth/wrangler.dev.toml", "--port=3001", "--remote"]
+        },
+        "local": {
+          "command": "wrangler dev",
+          "args": [
+            "--config=apps/server/auth/wrangler.dev.toml",
+            "--port=3001",
+            "--persist-to=.wrangler/auth"
+          ]
+        }
+      },
+      "defaultConfiguration": "development"
+    }
+  },
+  "tags": ["type:app", "scope:worker", "provider:cloudflare", "scope:auth"],
+  "implicitDependencies": ["@snappbiz/auth", "@snappbiz/jwt", "@snappbiz/crypto"]
+}

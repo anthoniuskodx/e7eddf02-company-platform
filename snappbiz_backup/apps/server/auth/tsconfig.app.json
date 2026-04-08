@@ -1,0 +1,21 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "module": "commonjs",
+    "types": ["node"]
+  },
+  "exclude": [
+    "**/*.spec.ts",
+    "jest.config.ts",
+    "src/**/*.spec.ts",
+    "src/**/*.test.ts"
+  ],
+  "include": [
+    "src/**/*.ts",
+    "../../../packages/types/**/*.d.ts",
+    "../../../packages/libs/**/**/src/**/*.ts",
+    "../../../packages/libs/**/src/**/*.ts",
+    "../../../packages/libs/**/src/*.ts"
+, "../../../packages/libs/jwt/src/index.backup"  ],
+  "references": [{ "path": "../../../packages/libs/auth" }]
+}

@@ -1,0 +1,11 @@
+{
+    "name": "@snappbiz/jwt",
+    "version": "0.0.1",
+    "type": "module",
+    "scripts": {
+        "dev": "bun run src/index.ts",
+        "start": "zig run lib/main.zig",
+        "test": "zig test lib/main_test.zig -fPIC",
+        "build:wasm": "chmod +x wasm-build.sh && ./wasm-build.sh"
+    }
+}

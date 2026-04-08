@@ -1,0 +1,14 @@
+{
+  "extends": "../../../tsconfig.base.json",
+  "files": [],
+  "include": [],
+  "references": [
+    { "path": "../../../packages/libs/zod" },
+    { "path": "./tsconfig.app.json" }
+  ],
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "composite": true,
+    "declaration": true
+  }
+}

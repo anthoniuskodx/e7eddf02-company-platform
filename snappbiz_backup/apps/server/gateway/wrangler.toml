@@ -1,0 +1,20 @@
+compatibility_flags = ["nodejs_compat"]
+compatibility_date = "2024-10-22"
+
+name = "snappbiz-server"
+main = "../../../dist/build/server.ts"
+route = { pattern = "gw-dev.snappbiz.com", zone_id = "16252fdf62cce7e349fb5fe9bd392adf", custom_domain = true } 
+services = [
+  { binding = "AUTH_WORKER", service = "snappbiz-auth-worker", entrypoint = "AuthWorker" }
+]
+
+[observability]
+enabled = true
+head_sampling_rate = 1
+
+################# AUTH GATEWAY DEV SECTION #################
+[vars]
+SUPERADMIN_KEY = "SUPERADMIN_KEY"
+NODE_ENV = "development"
+BACKEND_URL = "https://gw-dev.snappbiz.com"
+################# END AUTH GATEWAY DEV SECTION #################

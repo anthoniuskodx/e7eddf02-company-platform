@@ -1,0 +1,42 @@
+{
+  "name": "@snappbiz/auth",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/libs/auth/src",
+  "projectType": "library",
+  "targets": {
+    "db:auth:generate": {
+      "command": "drizzle-kit generate",
+      "options": {
+        "args": [
+          "--config packages/libs/auth/configs/drizzle.auth.config.ts"
+        ]
+      }
+    },
+    "db:auth:migrate:local": {
+      "command": "wrangler d1 migrations apply auth-dev",
+      "options": {
+        "args": [
+          "--local",
+          "--env=auth",
+          "--config packages/libs/auth/wrangler.dev.toml",
+          "--persist-to=.wrangler/auth"
+        ]
+      }
+    },
+    "db:auth:drop": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "drizzle-kit drop",
+        "args": ["--config packages/libs/auth/configs/drizzle.auth.config.ts"]
+      }
+    },
+    "db:auth:studio": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "drizzle-kit studio",
+        "args": ["--config packages/libs/auth/configs/drizzle.auth.config.ts"]
+      }
+    }
+  },
+  "tags": ["type:lib", "scope:auth"]
+}

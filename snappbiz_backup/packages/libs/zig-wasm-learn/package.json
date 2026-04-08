@@ -1,0 +1,10 @@
+{
+    "name": "@snappbiz/jwt-backup",
+    "version": "0.0.1",
+    "type": "module",
+    "scripts": {
+        "start": "zig run src/main.zig",
+        "test": "zig test src/main_test.zig -fPIC",
+        "build:wasm": "chmod +x wasm-build.sh && ./wasm-build.sh"
+    }
+}

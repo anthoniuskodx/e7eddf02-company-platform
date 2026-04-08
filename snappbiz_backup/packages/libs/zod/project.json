@@ -1,0 +1,8 @@
+{
+  "name": "@snappbiz/zod-ext",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/libs/zod/src",
+  "projectType": "library",
+  "targets": {},
+  "tags": ["type:lib"]
+}

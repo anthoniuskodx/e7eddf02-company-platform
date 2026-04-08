@@ -1,0 +1,10 @@
+compatibility_flags = ["nodejs_compat"]
+compatibility_date = "2024-10-22"
+
+################# TENANT PROD SECTION #################
+[[d1_databases]]
+binding = "TenantDB" # Should match preview_database_id
+database_name = "tenant"
+database_id = "224734de-e396-4d4e-b9e3-97e1d9b5187b" # wrangler d1 info YOUR_DATABASE_NAME
+migrations_dir = "migrations"
+################# END TENANT PROD SECTION #################

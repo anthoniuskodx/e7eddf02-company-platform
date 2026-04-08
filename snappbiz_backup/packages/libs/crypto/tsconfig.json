@@ -1,0 +1,21 @@
+{
+  "extends": "../../../tsconfig.base.json",
+  "compilerOptions": {
+    "composite": true,
+    "declaration": true,
+    "module": "commonjs",
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "noImplicitOverride": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "noPropertyAccessFromIndexSignature": true
+  },
+  "files": [],
+  "include": [
+    "../../../packages/libs/**/**/src/**/*.ts",
+    "../../../packages/libs/**/src/**/*.ts",
+    "../../../packages/libs/**/src/*.ts"
+, "../jwt/src/index.backup"  ],
+  "references": []
+}

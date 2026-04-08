@@ -1,0 +1,30 @@
+compatibility_flags = ["nodejs_compat"]
+compatibility_date = "2024-10-22"
+
+name = "snappbiz-oidc-worker"
+main = "../../../dist/build/worker.ts"
+minify = true
+
+[observability]
+enabled = true
+head_sampling_rate = 1
+
+################# OIDC PROD SECTION #################
+[vars]
+NODE_ENV = "production"
+BACKEND_URL = "https://gw-dev.snappbiz.com"
+JWT_ISSUER = "https://gw-dev.snappbiz.com/oidc"
+JWT_PRIVATE_KEY = """
+-----BEGIN PRIVATE KEY-----
+MIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQgvyW1iLTi4GRqIrbe
+ugkFnBNflF5CCSZp4ZJ2V6AYKUihRANCAAQlM7y6KKxEnCnM12jKb0MYco369ZGI
+F9PDDrdae5Wm++88rhbJTuyHOMiJbG9HUkHBklPpntfbaYqar47reNPn
+-----END PRIVATE KEY-----
+"""
+JWT_PUBLIC_KEY = """
+-----BEGIN PUBLIC KEY-----
+MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEJTO8uiisRJwpzNdoym9DGHKN+vWR
+iBfTww63WnuVpvvvPK4WyU7shzjIiWxvR1JBwZJT6Z7X22mKmq+O63jT5w==
+-----END PUBLIC KEY-----
+"""
+################# END OIDC PROD SECTION #################

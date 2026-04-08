@@ -1,0 +1,26 @@
+{
+  "name": "@snappbiz/jwt",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/libs/auth/src",
+  "projectType": "library",
+  "targets": {
+    "dev": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "zig run packages/libs/jwt/lib/main.zig"
+      },
+      "configurations": {
+        "generate-key-pair": {
+          "command": "bun run packages/libs/jwt/src/generateKey.ts"
+        }
+      }
+    },
+    "build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "chmod +x packages/libs/jwt/wasm-build.sh && packages/libs/jwt/wasm-build.sh"
+      }
+    }
+  },
+  "tags": ["type:lib", "scope:auth"]
+}

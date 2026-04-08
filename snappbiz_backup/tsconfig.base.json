@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "lib": ["es2020", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "typeRoots": [
+      "node_modules/@types",
+      "node_modules/@cloudflare/workers-types"
+    ],
+    "paths": {
+      "@snappbiz/auth": ["packages/libs/auth/src/index.ts"],
+      "@snappbiz/jwt": ["packages/libs/jwt/src/index.ts"],
+      "@snappbiz/tenant": ["packages/libs/tenant/src/index.ts"],
+      "@snappbiz/crypto": ["packages/libs/crypto/src/index.ts"],
+      "@snappbiz/zod-ext": ["packages/libs/zod/src/index.ts"]
+    }
+  },
+  "exclude": ["node_modules", "tmp"],
+  "include": ["packages/types/**/*.d.ts"]
+}

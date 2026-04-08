@@ -1,0 +1,38 @@
+{
+  "name": "gateway-server",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/server/gateway/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "bun build --minify apps/server/gateway/src/index.ts --outfile dist/build/server.ts"
+      }
+    },
+    "deploy": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "wrangler deploy",
+        "args": ["--config=./apps/server/gateway/wrangler.toml"]
+      }
+    },
+    "wrangler": {
+      "command": "wrangler dev",
+      "options": {
+        "args": ["--config=./apps/server/gateway/wrangler.toml", "--port=3000"]
+      },
+      "configurations": {
+        "remote": {
+          "args": ["--config=./apps/server/gateway/wrangler.dev.toml", "--port=3000", "--remote"]
+        },
+        "local": {
+          "args": ["--config=./apps/server/gateway/wrangler.dev.toml", "--port=3000"]
+        }
+      },
+      "defaultConfiguration": "development"
+    }
+  },
+  "tags": ["type:app", "scope:server", "provider:cloudflare"],
+  "implicitDependencies": ["@snappbiz/auth"]
+}
