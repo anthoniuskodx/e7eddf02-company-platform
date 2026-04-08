@@ -1,0 +1,20 @@
+# Code Owners
+# Anyone listed here will be automatically requested for review
+# when a pull request modifies files they own
+
+# Default owners for everything in the repo
+* @anthoniuskodx
+
+# Backend ownership
+/apps/backend/ @anthoniuskodx
+
+# Frontend ownership
+/apps/frontend/ @anthoniuskodx
+
+# Infrastructure & DevOps
+/.github/ @anthoniuskodx
+/docker-compose.yml @anthoniuskodx
+/Dockerfile @anthoniuskodx
+
+# Documentation
+/docs/ @anthoniuskodx
